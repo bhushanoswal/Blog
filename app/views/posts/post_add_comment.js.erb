@@ -1,1 +1,4 @@
-$("#comments-all-view").html("<%= escape_javascript(render("comment")) %>");
+$("#myModal").html("<%= escape_javascript(render("show")) %>");
+<% if !@comment.errors.any? %>
+$("#post-add-success").show();
+<% end %>

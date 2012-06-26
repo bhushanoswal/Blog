@@ -17,6 +17,7 @@ class PostsController < ApplicationController
   def post_create
     @post = Post.new(params[:post])
     @post.save
+    @posts = Post.all
   end
 
   def post_edit
@@ -26,11 +27,13 @@ class PostsController < ApplicationController
   def post_update
     @post = Post.find(params[:id])
     @post.update_attributes(params[:post])
+    @posts = Post.all
   end
 
   def post_delete
     @post = Post.find(params[:id])
     @post.destroy
+    @posts = Post.all
   end
 
   def post_add_comment

@@ -6,7 +6,7 @@
   <p><strong>Title: </strong> <%= @post.title %></p>
   <p><strong>Description: </strong><%= @post.description %></p>
   <br/>
-  <h3>Add Comments</h3>
+  <h3>View Comments</h3>
 
   <div class="span5 well" id="comments-all-view" style="margin-left: 10px;">
     <%= render "comment" %>
@@ -14,6 +14,20 @@
   <br/>
   <h3>Add Comments</h3>
   <div class="span5 well" style="margin-left: 10px;">
+    <% if @comment.errors.any? %>
+        <div class="alert alert-error">
+          <ul>
+            <% @comment.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <div class="alert alert-success hide" id="post-add-success">
+      <ul>
+        <li>Comment Added Successfully</li>
+      </ul>
+    </div>
   <%= form_for @comment, :remote => true, :url => post_add_comment_post_path, :method => "POST" do |m| %>
       <fieldset>
         <div class="control-group">

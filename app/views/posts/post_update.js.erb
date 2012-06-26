@@ -2,3 +2,4 @@ $("#myModal").html("<%= escape_javascript(render("edit_post")) %>");
 <% if !@post.errors.any? %>
 $("#post-add-success").show();
 <% end %>
+$("#index-pg").html("<%= escape_javascript(render("index")) %>");

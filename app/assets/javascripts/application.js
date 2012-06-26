@@ -19,7 +19,7 @@ $(document).ready(function(){
 
 
 
-    $(".show").click(function(e){
+    $(".show").live("click",function(e){
         var id = $(this).parent().attr('id');
 //        alert(id);
         $.ajax({
@@ -31,7 +31,7 @@ $(document).ready(function(){
         });
     });
 
-    $(".edit").click(function(e){
+    $(".edit").live("click",function(e){
         var id = $(this).parent().attr('id');
 //        alert(id);
         $.ajax({
@@ -43,7 +43,7 @@ $(document).ready(function(){
         });
     });
 
-    $(".delete").click(function(e){
+    $(".delete").live("click",function(e){
         var id = $(this).parent().attr('id');
 //        alert(id);
         bootbox.confirm("Are you sure?", function(confirmed) {
@@ -60,7 +60,7 @@ $(document).ready(function(){
         });
     });
 
-    $("#add-post").click(function(e){
+    $("#add-post").live("click",function(e){
         $.ajax({
             url: '/posts/post_new',
             type: "GET",

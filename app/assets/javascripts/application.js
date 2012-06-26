@@ -14,3 +14,83 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
+
+$(document).ready(function(){
+
+
+
+    $(".show").click(function(e){
+        var id = $(this).parent().attr('id');
+//        alert(id);
+        $.ajax({
+            url: '/posts/'+id+'/post_show',
+            type: "GET",
+            success: function(){
+                box();
+            }
+        });
+    });
+
+    $(".edit").click(function(e){
+        var id = $(this).parent().attr('id');
+        alert(id);
+//        $.ajax({
+//            url: '/posts/'+ id + '/post_add_comment.js',
+//            type: "POST",
+//            data: {text :comment},
+//            success: function (data) {
+//
+//                //alert(data);
+//            }
+//        });
+    });
+
+    $(".delete").click(function(e){
+        var id = $(this).parent().attr('id');
+        alert(id);
+//        $.ajax({
+//            url: '/posts/'+ id + '/post_add_comment.js',
+//            type: "POST",
+//            data: {text :comment},
+//            success: function (data) {
+//
+//                //alert(data);
+//            }
+//        });
+
+    });
+
+    $("#add-post").click(function(e){
+        $.ajax({
+            url: '/posts/post_new',
+            type: "GET",
+            success: function(){
+                box();
+            }
+        });
+
+    });
+
+    function box()
+    {
+        $("#myModal").modal({
+            "backdrop"  : "static",
+            "keyboard"  : true,
+            "show"      : true    // this parameter ensures the modal is shown immediately
+        });
+
+        $("#myModal").bind("show", function() {
+            $("#myModal a.close").click(function(e) {
+                $("#myModal").modal('hide');
+            });
+        });
+
+        $("#myModal").bind("hide", function() {
+            $("#myModal a.close").unbind();
+        });
+    }
+
+
+
+
+})

@@ -1,0 +1,47 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal">×</button>
+  <h3>Add Post</h3>
+</div>
+<div class="modal-body">
+
+  <div class="span4 well" style="margin-left: 65px;">
+
+    <% if @post.errors.any? %>
+        <div class="alert alert-error">
+          <ul>
+            <% @post.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <div class="alert alert-success hide" id="post-add-success">
+      <ul>
+            <li>Post Added Successfully</li>
+      </ul>
+    </div>
+    <%= form_for @post, :remote => true, :url => post_create_posts_path, :method => "POST" do |m| %>
+        <fieldset>
+          <div class="control-group">
+            <%= m.label :title %>
+            <div class="controls">
+              <%= m.text_field :title , :class => "span4" %>
+            </div>
+          </div>
+          <div class="control-group">
+            <%= m.label :description %>
+            <div class="controls">
+              <%= m.text_area :description, :class => "span4", :rows => 5 %>
+            </div>
+          </div>
+
+
+          <%=m.submit :value => " Add Post", :class => "btn btn-primary", :style => "float:right;"%>
+
+        </fieldset>
+    <% end %>
+  </div>
+</div>
+
+
+

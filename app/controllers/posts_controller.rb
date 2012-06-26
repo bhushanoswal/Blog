@@ -5,15 +5,16 @@ class PostsController < ApplicationController
   end
 
   def post_show
-
+     @post = Post.find(params[:id])
   end
 
   def post_new
-
+    @post = Post.new
   end
 
   def post_create
-
+    @post = Post.new(params[:post])
+    @post.save
   end
 
   def post_edit

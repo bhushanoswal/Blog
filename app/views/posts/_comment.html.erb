@@ -1,0 +1,5 @@
+<% @comments.each do |comment| %>
+    <%if comment.id.present?%>
+        <div class="comment"><%=comment.comment %></div>
+    <% end %>
+<% end %>

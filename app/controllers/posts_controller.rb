@@ -1,11 +1,13 @@
 class PostsController < ApplicationController
 
   def post_index
-    @post = Post.all
+    @posts = Post.all
   end
 
   def post_show
      @post = Post.find(params[:id])
+     @comments = @post.comments
+     @comment = @post.comments.new
   end
 
   def post_new
@@ -32,7 +34,10 @@ class PostsController < ApplicationController
   end
 
   def post_add_comment
-
+    @post = Post.find(params[:id])
+    @comment = @post.comments.new(params[:comment])
+    @comment.save
+    @comments = @post.comments
   end
 
   def post_delete_comment

@@ -4,7 +4,7 @@
       <h2>Posts List</h2>
     </div>
 
-    <% if @post.length!=0 %>
+    <% if @posts.length!=0 %>
         <section>
           <table class="table table-bordered table-striped">
             <tr>
@@ -13,7 +13,7 @@
               <th></th>
             </tr>
 
-            <% @post.each do |post| %>
+            <% @posts.each do |post| %>
                 <tr>
                   <td><%= post.title %></td>
                   <td><%= post.description %></td>

@@ -1,5 +1,4 @@
-$("#myModal").html("<%= escape_javascript(render("new_post")) %>");
+$("#myModal").html("<%= escape_javascript(render("edit_post")) %>");
 <% if !@post.errors.any? %>
 $("#post-add-success").show();
 <% end %>
-

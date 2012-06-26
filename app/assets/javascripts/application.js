@@ -33,31 +33,31 @@ $(document).ready(function(){
 
     $(".edit").click(function(e){
         var id = $(this).parent().attr('id');
-        alert(id);
-//        $.ajax({
-//            url: '/posts/'+ id + '/post_add_comment.js',
-//            type: "POST",
-//            data: {text :comment},
-//            success: function (data) {
-//
-//                //alert(data);
-//            }
-//        });
+//        alert(id);
+        $.ajax({
+            url: '/posts/'+id+'/post_edit',
+            type: "GET",
+            success: function(){
+                box();
+            }
+        });
     });
 
     $(".delete").click(function(e){
         var id = $(this).parent().attr('id');
-        alert(id);
-//        $.ajax({
-//            url: '/posts/'+ id + '/post_add_comment.js',
-//            type: "POST",
-//            data: {text :comment},
-//            success: function (data) {
-//
-//                //alert(data);
-//            }
-//        });
-
+//        alert(id);
+        bootbox.confirm("Are you sure?", function(confirmed) {
+            console.log("Confirmed: "+confirmed);
+            if(confirmed==true){
+                $.ajax({
+                    url: '/posts/'+id+'/post_delete',
+                    type: "DELETE",
+                    success: function(){
+                        bootbox.alert("Post Deleted");
+                    }
+                });
+            }
+        });
     });
 
     $("#add-post").click(function(e){

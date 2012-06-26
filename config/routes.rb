@@ -1,4 +1,25 @@
 Blog::Application.routes.draw do
+
+  root :to => 'posts#post_index'
+
+  resources :posts , :except => [:new, :create, :edit, :update, :show, :destroy] do
+    member do
+      get 'post_show'
+      get 'post_edit'
+      put 'post_update'
+      delete 'post_delete'
+      post 'post_add_comment'
+      delete 'post_delete_comment'
+    end
+
+    collection do
+      get 'post_index'
+      get 'post_new'
+      post 'post_new'
+      post 'post_create'
+    end
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
